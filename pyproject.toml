@@ -1,0 +1,24 @@
+[project]
+name = "apready"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Sam Perillo",email = "sam@perillo.dev"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+
+
+[tool.poetry.dependencies]
+click = "^8.1.8"
+colorama = "^0.4.6"
+termcolor = "^2.5.0"
+inquirer = "^3.4.0"
+jsonmerge = "^1.9.2"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+apready = "apready.cli:cli"
