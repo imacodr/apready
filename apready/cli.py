@@ -1,7 +1,9 @@
 import os
 import click
 
-from apready.files import readlines
+from colored import Fore, Back, Style
+
+from apready.files import readlines, writelines, downloads_path
 from apready.scraper import scrap
 
 @click.group()
@@ -16,10 +18,21 @@ def cli(ctx: click.Context) -> None:
 @click.pass_context
 def scrape(ctx: click.Context, input: str, type: click.Choice):
     """scrape comments off your file and generate a copy without it"""
-    
-    
 
-    print(input)
+
     data = readlines(input)
-    print(data)
-    scrap(data, ["#"])
+    new = scrap(data, ["#"])
+    print(new)
+
+    for line in new:
+        print(line)
+
+    file_name = os.path.basename(input)
+
+    copy_title_split = file_name.split(".")
+
+    writelines(downloads_path + "/" + copy_title_split[0] + "-copy." + copy_title_split[1], new)
+    
+    click.echo("")
+    click.echo(Fore.GREEN + "☑")
+    

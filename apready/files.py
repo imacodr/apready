@@ -6,8 +6,10 @@ from jsonmerge import merge
 
 # Boomness
 
+downloads_path = str(Path.home() / "Downloads")
+
 def writelines(file_name: str | Path, items: list):
-    with open(file_name, 'w') as file:
+    with open(file_name, 'w') as file: # Booming
         for i in range(0, len(items)):
             file.write(items[i]+"\n")
 
@@ -20,7 +22,7 @@ def readlines(file_name: str | Path) -> list:
 
     return new_list
 
-def read_file(path):
+def read_file(path): # This is a cool function
     if os.path.exists(path):
         with open(path, "r") as file:
             data = json.load(file)
@@ -29,7 +31,7 @@ def read_file(path):
     else:
          return None
 
-def write_file(path, data):
+def write_json(path, data):
     with open(path, "w") as file:
         json.dump(data, file, indent = 4)
 
