@@ -10,7 +10,7 @@ from apready.scraper import scrap
 @click.version_option()
 @click.pass_context
 def cli(ctx: click.Context) -> None:
-    """✅ AP Ready - Check if your AP test is ready for submission, scrape comments and help document."""
+    """🐿️ Good to Go - Check if your AP test is ready for submission, scrape comments and help document."""
 
 @cli.command()
 @click.option("-i", "--input", prompt="Input a path to the script", help="Script to scrape", type=str)
@@ -30,7 +30,7 @@ def scrape(ctx: click.Context, input: str, type: click.Choice):
 
     copy_title_split = file_name.split(".")
 
-    file_name = downloads_path + "/" + copy_title_split[0] + "-ready." + copy_title_split[1]
+    file_name = downloads_path + "/" + copy_title_split[0] + "-good." + copy_title_split[1]
 
     writelines(file_name, new)
     
