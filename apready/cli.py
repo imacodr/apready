@@ -1,7 +1,7 @@
 import os
 import click
 
-from colored import Fore, Back, Style
+from colorama import Fore, Back, Style
 
 from apready.files import readlines, writelines, downloads_path
 from apready.scraper import scrap
@@ -21,8 +21,7 @@ def scrape(ctx: click.Context, input: str, type: click.Choice):
 
 
     data = readlines(input)
-    new = scrap(data, ["#"])
-    print(new)
+    new = scrap(data, ["#"], ['"""'])
 
     for line in new:
         print(line)
@@ -31,8 +30,12 @@ def scrape(ctx: click.Context, input: str, type: click.Choice):
 
     copy_title_split = file_name.split(".")
 
-    writelines(downloads_path + "/" + copy_title_split[0] + "-copy." + copy_title_split[1], new)
+    file_name = downloads_path + "/" + copy_title_split[0] + "-ready." + copy_title_split[1]
+
+    writelines(file_name, new)
     
     click.echo("")
-    click.echo(Fore.GREEN + "☑")
+    click.echo(Fore.GREEN + "☑ Successfully scraped file!")
+    click.echo(Fore.RESET + "It can be found in " + Fore.BLUE + file_name)
+    click.echo(Fore.RESET + "")
     

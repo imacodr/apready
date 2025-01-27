@@ -6,6 +6,14 @@ from jsonmerge import merge
 
 # Boomness
 
+"""
+Hello there
+BOOMING
+MULTILINE
+IS COOL
+YEP YEP YEP
+"""
+
 downloads_path = str(Path.home() / "Downloads")
 
 def writelines(file_name: str | Path, items: list):
@@ -35,9 +43,9 @@ def write_json(path, data):
     with open(path, "w") as file:
         json.dump(data, file, indent = 4)
 
-def merge_file(path, new_data):
+def merge_json(path, new_data):
      current_data = read_file(path)
      
      merged_data = merge(current_data, new_data)
      
-     write_file(path, merged_data)
+     write_json(path, merged_data)
